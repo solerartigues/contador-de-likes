@@ -1,24 +1,36 @@
 import React from "react";
-
+import { useState } from "react/cjs/react.production.min";
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
+	const [variable, setVariable] = useState(0);
 	return (
-		<div>
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
+		<div className="text-center">
+			<h1>Red Social Rigo!</h1>
 			<p>
 				<img src={rigoImage} />
 			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
+			<a
+				href="#"
+				className="btn btn-success col"
+				onClick={() => {
+					setVariable(variable + 1);
+				}}>
+				Like
 			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+			<a
+				href="#"
+				className="btn btn-danger col"
+				onClick={() => {
+					if (variable > 0) {
+						setVariable(variable - 1);
+					}
+				}}>
+				Dislike
+			</a>
+			<h2>{variable} </h2>
 		</div>
 	);
 };
